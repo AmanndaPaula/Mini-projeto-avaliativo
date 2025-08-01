@@ -30,7 +30,7 @@ document.getElementById("apagar-tudo").addEventListener("click", function () {
   }
 });
 
-// 4. Função para criar elemento da tarefa com botão "Apagar"
+// 4. Função que adiciona visualmente a tarefa na lista
 function adicionarNaLista(texto) {
   const lista = document.getElementById("lista-tarefas");
   const li = document.createElement("li");
@@ -42,7 +42,7 @@ function adicionarNaLista(texto) {
   botaoRemover.textContent = "🗑️";
   botaoRemover.classList.add("botao-remover");
 
-  // Evento de clique para apagar tarefa individual
+  // Ao clicar no botão "🗑️", remove a tarefa
   botaoRemover.addEventListener("click", function () {
     if (confirm(`Deseja remover a tarefa: "${texto}"?`)) {
       lista.removeChild(li);
@@ -57,3 +57,37 @@ function adicionarNaLista(texto) {
   li.appendChild(botaoRemover);
   lista.appendChild(li);
 }
+
+// 5. Finalizar o dia: salvar tarefas + detalhes no relatório
+document.getElementById("finalizar-dia").addEventListener("click", () => {
+  const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+  if (tarefas.length === 0) {
+    alert("Não há tarefas para salvar.");
+    return;
+  }
+
+  // Solicita os detalhes do dia ao usuário
+  const detalhes = prompt("Deseja escrever algum detalhe sobre o seu dia? (opcional)");
+
+  const hoje = new Date().toISOString().split("T")[0]; // formato YYYY-MM-DD
+  const relatorios = JSON.parse(localStorage.getItem("relatorios")) || {};
+
+  // Salva tarefas + observações
+  relatorios[hoje] = {
+    tarefas: tarefas,
+    detalhes: detalhes || ""
+  };
+
+  localStorage.setItem("relatorios", JSON.stringify(relatorios));
+
+  alert("Relatório do dia salvo com sucesso!");
+
+  // Limpa as tarefas
+  localStorage.removeItem("tarefas");
+  document.getElementById("lista-tarefas").innerHTML = "";
+});
+
+// Botão que redireciona para a página de relatório
+    document.getElementById("ver-relatorio").addEventListener("click", () => {
+      window.location.href = "relatorio.html";
+    });
