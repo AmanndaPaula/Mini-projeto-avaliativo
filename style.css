@@ -94,3 +94,64 @@ li {
 .botao-remover:hover {
   background-color: #c2185b;
 }
+/* Estilo para o campo de busca e resultados */
+#busca-palavra {
+  padding: 10px;
+  width: 50%;
+  border: 1px solid #ff80ab;
+  border-radius: 8px;
+  outline: none;
+}
+
+#buscar-detalhes {
+  padding: 10px 20px;
+  background-color: #ff4081;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+#buscar-detalhes:hover {
+  background-color: #f50057;
+}
+
+#resultados-busca {
+  margin-top: 25px;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#resultados-busca button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #ffc1e3;
+  color: #880e4f;
+  border: 1px solid #ff80ab;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#resultados-busca button:hover {
+  background-color: #f8bbd0;
+}
+/* Agrupa o h2, input e botão de busca */
+.busca-relatorio {
+  margin-top: 80px; /* ajuste conforme desejar */
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.busca-relatorio h2 {
+  margin-bottom: 20px;
+  font-size: 1.3em;
+  color: #880e4f;
+}
